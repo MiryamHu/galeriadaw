@@ -1,0 +1,92 @@
+
+@font-face {
+    font-family: "rings";
+    src: url(../font/rings.TTF);
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "rings";
+}
+body{
+    background-image: url(../img/fondo.jpg);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+h1{
+    margin: 50px 0px;
+    text-align: center;
+    font-size: 70px;
+    display: block;
+    color: gold;
+}
+.fotos{
+    width: 100%;
+    /* de arriba abajo 0 y de los laterales automatico */
+    margin:0 auto;
+}
+
+/* after: los elementos que van a continuacion  */
+.container::after{
+    /* Para que el contenedor muestre elementos aunque estos sean flotantes, se oculte elemtnos cuando pase el raton */
+    content:"";
+    display: block;
+    height: 0px;
+    /* colocar los elementos queden juntos */
+    clear: both;
+}
+.container{
+    width: 90%;
+    margin: 0 9%;
+    color: antiquewhite;
+}
+/* Estructura de cada componente de la galeria (imagen + descripcion) */
+.container div{
+    /* Para que vayan 3 fotos por cada fila */
+    width: 28%;
+    height: auto;
+    display: inline;
+    float: left;
+    margin: 0% 3% 0% 0%;
+    padding: 0px;
+}
+.container div img{
+    width: 100%;
+    height: 300px;
+    box-shadow: 0 0 10px #666;
+    border: 5px solid #fff;
+}
+/* Estructura de la descripcion, por defecto que no se muestre */
+.container div img~span{
+    width: 100%;
+    display: block;
+    opacity: 0;
+    margin: 0;
+    padding: 2px 5px;
+    color: #fff;
+    /* background: rgba(0,0,0,0.7); */
+    background: rgba(198, 198, 198, 0.7);
+    box-shadow: 0 0 10px #666;
+    text-align: center;
+}
+/* Se muestra la desscripción al posicionar el cursor encima de la imagen */
+.container div img:hover+span{
+    opacity: 1;
+}
+/* Establecemos el comportamiento que tendrán las imagenes al posicionar
+el cursor encima del contenedor */
+.container:hover div{
+    opacity: 0.2;
+    /* menos de 1 se hace mas pequeño la imgen */
+    transform: scale(0.7);
+    /* cuanto tiempo demora en hacerse pequño */
+    transition: 2s;
+}
+/* Se especifica el comportaamiento que tendrá la imagen seleccionada */
+.container:hover div:hover{
+    opacity: 1;
+    transform: scale(1);
+}
